@@ -12,7 +12,9 @@ RUN npm run build
 # /usr/share/nginx/html is the default dir where staic files are served from
 
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
+
 
 
 
