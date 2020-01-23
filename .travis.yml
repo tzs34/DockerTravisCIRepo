@@ -8,6 +8,28 @@ before_install:
 script:
     - docker run -e CI=true webapp npm run test -- --coverage
 
+    # config to deploy to aws
+    # Generate a user in IAM to use elasticbeanstalkaccess policy
+    # Set these in the env variables of Travis-CI
+deploy:
+    edge: true
+    provider: elasticbeanstalk 
+    region: my-region
+    app: 'my app name'
+    env: 'docker environment name'
+    bucket_name: 'your-bucket-name'
+    bucket_path: 'my-app-name'
+    on:
+        branch: master 
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+
+            
+
+    
+
+
 
 
 
